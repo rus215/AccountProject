@@ -4,10 +4,14 @@ plugins {
 }
 
 group = "com.example"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+springBoot {
+    mainClass = "com.example.account.project.AccountProjectApplication"
 }
 
 repositories {
@@ -42,6 +46,10 @@ dependencies {
     //Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
+}
+
+tasks.jar {
+    enabled = false
 }
 
 tasks.withType<Test> {
