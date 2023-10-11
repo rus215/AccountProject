@@ -6,16 +6,54 @@
 
     <changeSet id="1696939837-create-account-table" author="Yakhin-R-I">
         <createTable tableName="account">
-            <column name="id" type="serial">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_id"/>
+            </column>
+            <column name="number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum" type="currency"/>
+            <column name="currency" type="varchar(10)">
+                <constraints checkConstraint="CHECK (currency is null or currency = 'RUB')"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="transaction">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="date_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(10)">
+                <constraints checkConstraint="CHECK (type = 'TRANSFER' or type = 'REFILL' or type = 'WRITE_OFF')"/>
+            </column>
+            <column name="status" type="varchar(10)">
+                <constraints checkConstraint="CHECK (status = 'SUCCESS' or status = 'ERROR')"/>
+            </column>
+            <column name="sum" type="currency">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="varchar(10)">
+                <constraints checkConstraint="CHECK (currency is null or currency = 'RUB')"/>
+            </column>
+            <column name="account_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_account" references="account(id)"/>
             </column>
         </createTable>
     </changeSet>
 
-<!--    <changeSet id="1696939937-insert-data" author="Yakhin-R-I">-->
-<!--        <insert tableName="account">-->
-<!--            <column name=""></column>-->
-<!--        </insert>-->
-<!--    </changeSet>-->
+    <changeSet id="1696939937-insert-data" author="Yakhin-R-I">
+        <insert tableName="account">
+            <column name="number" value="40702810120000682233"/>
+            <column name="sum" value="6000"/>
+            <column name="currency" value="RUB"/>
+        </insert>
+        <insert tableName="account">
+            <column name="number" value="40702810120000682234"/>
+            <column name="sum" value="7000"/>
+            <column name="currency" value="RUB"/>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>

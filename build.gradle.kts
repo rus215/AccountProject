@@ -23,6 +23,7 @@ val springBootVersion by extra("2.5.15")
 val mapstructVersion by extra("1.5.5.Final")
 val lombokVersion by extra("1.18.30")
 val lombokMapstructBindingVersion by extra("0.2.0")
+val hibernateValidatorVersion by extra("5.4.3.Final")
 
 dependencies {
     // Spring
@@ -36,6 +37,7 @@ dependencies {
     //Database
     implementation("org.liquibase:liquibase-core")
     implementation("org.postgresql:postgresql")
+    implementation("org.hibernate:hibernate-validator:${hibernateValidatorVersion}")
     //Mapper
     implementation("org.mapstruct:mapstruct:${mapstructVersion}")
     annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
