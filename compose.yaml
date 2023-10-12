@@ -43,12 +43,16 @@ services:
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
+    networks:
+      - spring-postgres
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
     image: confluentinc/cp-kafka:latest
+    networks:
+      - spring-postgres
     depends_on:
       - zookeeper
     environment:
@@ -62,6 +66,8 @@ services:
   kafka-ui:
     container_name: kafka-ui
     image: provectuslabs/kafka-ui:latest
+    networks:
+      - spring-postgres
     depends_on:
       - kafka
     ports:
