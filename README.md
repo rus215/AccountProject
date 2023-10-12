@@ -1,3 +1,23 @@
-Database test
+# Запуск приложения
 
-docker run --rm --name account_db -e POSTGRES_USER=account_db -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres
+Для запуска приложения необходимо выполнить команду
+
+```bash
+docker-compose up -d
+```
+
+Для остановки приложения необходимо выполнить команду
+
+```bash
+docker-compose down
+```
+
+Приложение будет доступно на `8080` порте.
+После запуска будут доступны вспомогательные инструменты
+
+- [PG Admin](http://localhost:5050/) login:`admin@admin.com` pass:`root`
+- [Kafka UI](http://localhost:8082/)
+
+## Примеры запросов
+
+Примеры запросов находятся в проекте в файле `generated-requests.http`
