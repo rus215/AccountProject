@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 @RequiredArgsConstructor
 @RequestMapping("/transaction")
 @RestController
@@ -21,13 +23,15 @@ public class TransactionController {
     private final TransferService transferService;
 
     @GetMapping("/get-info")
-    public TransactionDto getInfo(@RequestParam Long id) {
-        return transactionService.getInfo(id);
+    public ResponseEntity<TransactionDto> getInfo(@RequestParam Long id) {
+        TransactionDto info = transactionService.getInfo(id);
+        return nonNull(info) ? ResponseEntity.ok(info) : ResponseEntity.noContent().build();
     }
 
     @PostMapping("/get-all")
-    public List<TransactionDto> getAll(@RequestBody AccountDto accountDto) {
-        return transactionService.getAll(accountDto.getNumber());
+    public ResponseEntity<List<TransactionDto>> getAll(@RequestBody AccountDto accountDto) {
+        List<TransactionDto> transactions = transactionService.getAll(accountDto.getNumber());
+        return transactions.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(transactions);
     }
 
     @PostMapping("/apply-transaction")
