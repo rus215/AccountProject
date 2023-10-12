@@ -2,7 +2,7 @@ package com.example.account.project.service;
 
 import com.example.account.project.dto.BalanceDto;
 import com.example.account.project.entity.Account;
-import com.example.account.project.entity.TransactionType;
+import com.example.account.project.dto.TransactionType;
 
 import java.math.BigDecimal;
 

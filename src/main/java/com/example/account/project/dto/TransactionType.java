@@ -1,7 +1,6 @@
-package com.example.account.project.entity;
+package com.example.account.project.dto;
 
 public enum TransactionType {
-    TRANSFER,
     REFILL,
     WRITE_OFF;
 }

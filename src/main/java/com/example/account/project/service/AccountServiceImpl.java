@@ -2,7 +2,7 @@ package com.example.account.project.service;
 
 import com.example.account.project.dto.BalanceDto;
 import com.example.account.project.entity.Account;
-import com.example.account.project.entity.TransactionType;
+import com.example.account.project.dto.TransactionType;
 import com.example.account.project.mapper.AccountMapper;
 import com.example.account.project.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;

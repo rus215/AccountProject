@@ -1,5 +1,7 @@
 package com.example.account.project.entity;
 
+import com.example.account.project.dto.Currency;
+import com.example.account.project.dto.TransactionType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;

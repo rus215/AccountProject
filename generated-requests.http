@@ -40,3 +40,14 @@ Content-Type: application/json
   "sum": "450",
   "type": "REFILL"
 }
+
+###
+###
+POST http://localhost:8080/transaction/transfer
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "40702810120000682233",
+  "toAccountNumber": "40702810120000682234",
+  "sum": "450"
+}

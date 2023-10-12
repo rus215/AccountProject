@@ -5,8 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class TransactionRequestDto {
-    private String accountNumber;
+public class TransferDto {
+    private String fromAccountNumber;
+    private String toAccountNumber;
     private BigDecimal sum;
-    private TransactionType type;
 }

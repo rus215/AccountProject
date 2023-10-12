@@ -29,7 +29,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="type" type="varchar(10)">
-                <constraints checkConstraint="CHECK (type = 'TRANSFER' or type = 'REFILL' or type = 'WRITE_OFF')"/>
+                <constraints checkConstraint="CHECK (type = 'REFILL' or type = 'WRITE_OFF')"/>
             </column>
             <column name="sum" type="currency">
                 <constraints nullable="false"/>

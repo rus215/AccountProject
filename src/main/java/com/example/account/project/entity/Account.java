@@ -1,5 +1,6 @@
 package com.example.account.project.entity;
 
+import com.example.account.project.dto.Currency;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -30,7 +31,4 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private List<Transaction> transactions = new ArrayList<>();
 
-    public void addTransaction(Transaction transaction) {
-        this.transactions.add(transaction);
-    }
 }

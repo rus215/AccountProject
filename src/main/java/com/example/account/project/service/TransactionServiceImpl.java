@@ -1,11 +1,10 @@
 package com.example.account.project.service;
 
+import com.example.account.project.dto.Currency;
 import com.example.account.project.dto.TransactionDto;
 import com.example.account.project.dto.TransactionRequestDto;
 import com.example.account.project.entity.Account;
-import com.example.account.project.entity.Currency;
 import com.example.account.project.entity.Transaction;
-import com.example.account.project.entity.TransactionType;
 import com.example.account.project.mapper.TransactionMapper;
 import com.example.account.project.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,16 +37,15 @@ public class TransactionServiceImpl implements TransactionService {
     @Transactional
     @Override
     public void applyTransaction(TransactionRequestDto requestDto) {
-        TransactionType type = TransactionType.valueOf(requestDto.getType().name());
         Transaction transaction = new Transaction();
         transaction.setCurrency(Currency.RUB);
         transaction.setSum(requestDto.getSum());
-        transaction.setType(type);
+        transaction.setType(requestDto.getType());
 
         Account account = accountService.recalculateBalance(
                 requestDto.getAccountNumber(),
                 requestDto.getSum(),
-                type
+                requestDto.getType()
         );
         transaction.setAccount(account);
         transactionRepository.save(transaction);

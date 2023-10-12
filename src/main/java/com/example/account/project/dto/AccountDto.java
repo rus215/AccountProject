@@ -1,6 +1,5 @@
 package com.example.account.project.dto;
 
-import com.example.account.project.entity.Currency;
 import lombok.Data;
 
 import java.math.BigDecimal;
