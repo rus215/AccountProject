@@ -1,0 +1,42 @@
+POST http://localhost:8080/account/balance
+Content-Type: application/json
+
+{
+  "number": "40702810120000682233"
+}
+
+###
+###
+GET http://localhost:8080/transaction/get-info?id=1
+Content-Type: application/json
+
+###
+###
+POST http://localhost:8080/transaction/get-all
+Content-Type: application/json
+
+{
+  "number": "40702810120000682233"
+}
+
+###
+###
+POST http://localhost:8080/transaction/apply-transaction
+Content-Type: application/json
+
+{
+  "accountNumber": "40702810120000682233",
+  "sum": "450",
+  "type": "WRITE_OFF"
+}
+
+###
+###
+POST http://localhost:8080/transaction/apply-transaction
+Content-Type: application/json
+
+{
+  "accountNumber": "40702810120000682233",
+  "sum": "450",
+  "type": "REFILL"
+}

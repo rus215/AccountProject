@@ -1,7 +1,6 @@
 package com.example.account.project.dto;
 
 import com.example.account.project.entity.Currency;
-import com.example.account.project.entity.Status;
 import com.example.account.project.entity.TransactionType;
 import lombok.Data;
 
@@ -15,8 +14,6 @@ public class TransactionDto {
     private LocalDateTime dateTime;
 
     private TransactionType type;
-
-    private Status status;
 
     private BigDecimal sum;
 

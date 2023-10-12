@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -27,5 +28,9 @@ public class Account {
     private Currency currency;
 
     @OneToMany(mappedBy = "account")
-    private List<Transaction> transactions;
+    private List<Transaction> transactions = new ArrayList<>();
+
+    public void addTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
+    }
 }

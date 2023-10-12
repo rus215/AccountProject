@@ -17,6 +17,9 @@
                 <constraints checkConstraint="CHECK (currency is null or currency = 'RUB')"/>
             </column>
         </createTable>
+        <createIndex indexName="ix_number" tableName="account">
+            <column name="number"/>
+        </createIndex>
 
         <createTable tableName="transaction">
             <column name="id" type="bigint" autoIncrement="true">
@@ -28,9 +31,6 @@
             <column name="type" type="varchar(10)">
                 <constraints checkConstraint="CHECK (type = 'TRANSFER' or type = 'REFILL' or type = 'WRITE_OFF')"/>
             </column>
-            <column name="status" type="varchar(10)">
-                <constraints checkConstraint="CHECK (status = 'SUCCESS' or status = 'ERROR')"/>
-            </column>
             <column name="sum" type="currency">
                 <constraints nullable="false"/>
             </column>
@@ -41,6 +41,9 @@
                 <constraints nullable="false" foreignKeyName="fk_account" references="account(id)"/>
             </column>
         </createTable>
+        <createIndex indexName="ix_account_id" tableName="transaction">
+            <column name="account_id"/>
+        </createIndex>
     </changeSet>
 
     <changeSet id="1696939937-insert-data" author="Yakhin-R-I">

@@ -2,6 +2,7 @@ package com.example.account.project.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,16 +17,12 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @CreationTimestamp
     private LocalDateTime dateTime;
 
     @NotNull
     @Enumerated(value = EnumType.STRING)
     private TransactionType type;
-
-    @NotNull
-    @Enumerated(value = EnumType.STRING)
-    private Status status;
 
     @NotNull
     private BigDecimal sum;
@@ -34,5 +31,6 @@ public class Transaction {
     private Currency currency;
 
     @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 }
